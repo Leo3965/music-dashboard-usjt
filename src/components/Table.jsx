@@ -1,13 +1,40 @@
+import arrowUp from "../assets/svg/arrow-up-outline.svg";
+import arrowDown from "../assets/svg/arrow-down-outline.svg";
+
 export default function Table() {
   let loading = "is-loading";
   return (
     <section class="section">
-      <div class="buttons">
-        <button class="button is-ghost is-not-selected-button ">Ghost</button>
-        <button class="button is-warning">Warning</button>
-        <button class="button is-ghost is-not-selected-button ">Ghost</button>
-        <button class="button is-ghost is-not-selected-button ">Ghost</button>
+      <div className="dataset-buttons">
+        <div class="buttons">
+          <button class="button is-ghost is-not-selected-button is-rounded">
+            Ghost
+          </button>
+          <button class="button is-warning is-rounded">Warning</button>
+          <button class="button is-ghost is-not-selected-button is-rounded">
+            Ghost
+          </button>
+          <button class="button is-ghost is-not-selected-button is-rounded">
+            Ghost
+          </button>
+        </div>
+
+        <div class="field has-addons">
+          <p class="control">
+            <button class="button is-info is-rounded">
+              <img className="icon-filter selected" src={arrowUp} />
+              <span>Ascending</span>
+            </button>
+          </p>
+          <p class="control">
+            <button class="button is-ghost is-not-selected-button is-rounded">
+            <img className="icon-filter" src={arrowDown} />
+              <span>Descending</span>
+            </button>
+          </p>
+        </div>
       </div>
+
       <div class="container">
         <div class="b-table has-pagination">
           <div class="table-wrapper has-mobile-cards">

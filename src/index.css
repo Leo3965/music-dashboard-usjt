@@ -31,6 +31,24 @@ body {
   border-bottom: 4px solid var(--dark-gray);
 }
 
+.dataset-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.icon-filter {
+  width: 20px;
+  height: 20px;
+  margin-right: 12px;
+}
+
+.icon-filter.selected {
+  filter: invert(100%) sepia(0%) saturate(3676%) hue-rotate(274deg) brightness(125%) contrast(112%);
+  width: 20px;
+  height: 20px;
+  margin-right: 12px;
+}
+
 .is-not-selected-button {
   color: var(--dark-gray) !important;
 }
