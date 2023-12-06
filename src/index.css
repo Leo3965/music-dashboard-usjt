@@ -1,10 +1,9 @@
 :root {
-
   --brown: #e1a857;
   --dark-gray: #2c3e50;
-  --light-gray: #B9CCE2;
-  --mostarda: #BF8520;
-  --light: #F1F1E6;
+  --light-gray: #b9cce2;
+  --mostarda: #bf8520;
+  --light: #f1f1e6;
 
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -26,8 +25,16 @@ body {
 }
 
 #hero {
-  background-image: url('./assets/images/angelo-pinheiro-vCQv8ARTyUs-unsplash.jpg');
+  background-image: url("./assets/images/angelo-pinheiro-vCQv8ARTyUs-unsplash.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   border-bottom: 4px solid var(--dark-gray);
+}
+
+.is-not-selected-button {
+  color: var(--dark-gray) !important;
+}
+
+.is-not-selected-button:hover {
+  color: var(--light) !important;
 }
