@@ -32,6 +32,10 @@ body {
 }
 
 /* table */
+.table-data-set {
+  margin: 0 0.9rem;
+}
+
 .dataset-buttons {
   display: flex;
   justify-content: space-between;
@@ -51,6 +55,7 @@ body {
 }
 
 .is-not-selected-button {
+  background: var(--light-gray);
   color: var(--dark-gray) !important;
 }
 
@@ -77,4 +82,9 @@ div.sticky {
 /* content */
 .content-section {
   padding: 3rem 4rem;
+}
+
+/* tales */
+.tales {
+  margin: 0 4rem 2rem 4rem;
 }
