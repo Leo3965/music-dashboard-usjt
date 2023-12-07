@@ -1,7 +1,7 @@
 import "./App.css";
 import Content from "./components/content/Content";
+import DataContainer from "./components/DataContainer";
 import Hero from "./components/Hero";
-import Table from "./components/table/Table";
 import Tales from "./components/tales/Tales";
 
 function App() {
@@ -9,8 +9,8 @@ function App() {
     <section>
       <Hero />
       <Content />
-      <Table />
-      <Tales />
+      <DataContainer />
+      <Tales/>
     </section>
   );
 }

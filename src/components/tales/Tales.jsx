@@ -1,5 +1,4 @@
 import Music from "./Music";
-import Tale from "./Tale";
 import Wiki from "./Wiki";
 
 export default function Tales() {
@@ -8,12 +7,9 @@ export default function Tales() {
       <div className="tile is-ancestor">
         <div className="tile is-4 is-vertical is-parent">
           <Wiki />
-          <Music/>
         </div>
-        <div className="tile is-parent">
-          <Tale title="3">
-            
-          </Tale>
+        <div className="tile  is-vertical is-parent">
+          <Music />
         </div>
       </div>
     </div>

@@ -4,10 +4,8 @@ import { useEffect, useState } from "react";
 import supabase from "../../config/supabaseClient";
 import Rows from "./Rows";
 
-export default function Table() {
-  const [filter, setFilter] = useState("Popularity");
+export default function Table({ musics, onChangeMusic, filter, onChangeFilter }) {
   const [order, setOrder] = useState(false);
-  const [musics, setMusics] = useState(null);
   const [range, setRange] = useState({
     from: 0,
     to: 9,
@@ -15,9 +13,9 @@ export default function Table() {
   const [pageNumber, setPageNumber] = useState(1);
 
   function handleFilterClick(filter) {
-    setFilter((prev) => {
+    onChangeFilter((prev) => {
       if (prev !== filter) {
-        setFilter(filter);
+        onChangeFilter(filter);
       }
     });
   }
@@ -57,21 +55,21 @@ export default function Table() {
       const { data, error } = await supabase
         .from("music")
         .select("*")
-        .order(filter, { ascending: order})
+        .order(filter, { ascending: order })
         .range(range.from, range.to);
 
       if (error) {
         console.log("Could not fetch the musics");
-        setMusics(null);
+        onChangeMusic(null);
       }
 
       if (data) {
-        setMusics(data);
+        onChangeMusic(data);
+        setLoading("");
       }
     };
 
     fetchMusics();
-    setLoading("");
   }, [range, order, filter]);
 
   return (
@@ -80,9 +78,7 @@ export default function Table() {
         <div className="dataset-buttons">
           <div className="buttons">
             <button
-              className={
-                filter === "Popularity" ? activeFilterCSS : filterCSS
-              }
+              className={filter === "Popularity" ? activeFilterCSS : filterCSS}
               onClick={() => handleFilterClick("Popularity")}
             >
               Popularidade
