@@ -2,7 +2,7 @@ export default function Video({ embedId }) {
   return (
     <>
       {embedId && (
-        <div class="sticky">
+        <div className="sticky">
           <iframe src={`https://www.youtube.com/embed/${embedId}`}></iframe>
         </div>
       )}

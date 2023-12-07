@@ -1,14 +1,13 @@
-import { useState } from "react";
 import "./App.css";
+import Content from "./components/content/Content";
 import Hero from "./components/Hero";
 import Table from "./components/Table";
-import Video from "./components/Video";
 
 function App() {
   return (
     <>
       <Hero />
-      <Video embedId="rokGy0huYEA" />
+      <Content />
       <Table />
     </>
   );

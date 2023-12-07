@@ -1,16 +1,16 @@
 export default function Hero() {
   return (
     <section id="hero" className="hero is-fullheight is-info">
-      <div class="hero-body">
-        <div class="container has-text-right">
-          <p class="title">A3 - Big Data</p>
-          <p class="subtitle">Music Genre Classification</p>
+      <div className="hero-body">
+        <div className="container has-text-right">
+          <p className="title">A3 - Big Data</p>
+          <p className="subtitle">Music Genre Classification</p>
         </div>
       </div>
 
-      <div class="hero-foot">
-        <nav class="tabs">
-          <div class="container">
+      <div className="hero-foot">
+        <nav className="tabs">
+          <div className="container">
             <ul>
               <li>
                 <a>2023 - 2º Semestre</a>
@@ -31,10 +31,6 @@ export default function Hero() {
           </div>
         </nav>
       </div>
-      {/* <div className="hero-body">
-        <p className="title">A3 - Big Data</p>
-        <p className="subtitle">Music Genre Classification</p>
-      </div> */}
     </section>
   );
 }

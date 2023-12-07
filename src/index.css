@@ -61,16 +61,20 @@ body {
 /* video */
 div.sticky {
   display: flex;
-  justify-content: flex-end;
-  position: -webkit-sticky;
-  position: sticky;
+  justify-content: center;
+  position: block;
   top: 0;
   padding: 40px;
 }
 
 .sticky > iframe {
-  height: 180px;
-  width: auto;
+  min-height: 400px;
+  min-width: 80%;
   border: 3px solid var(--dark-gray);
   box-shadow:27px 19px 45px rgba(0, 0, 0, 0.678);
+}
+
+/* content */
+.content-section {
+  padding: 3rem 4rem;
 }
