@@ -82,3 +82,7 @@ div.sticky {
 .tales {
   margin: 0 4rem 2rem 4rem;
 }
+
+.tales-no-back {
+  background: none;
+}
