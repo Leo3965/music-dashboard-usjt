@@ -1,20 +1,17 @@
-import arrowUp from "../../assets/svg/arrow-up-outline.svg";
-import arrowDown from "../../assets/svg/arrow-down-outline.svg";
 import { useEffect, useState } from "react";
+import arrowDown from "../../assets/svg/arrow-down-outline.svg";
+import arrowUp from "../../assets/svg/arrow-up-outline.svg";
 import supabase from "../../config/supabaseClient";
 import Rows from "./Rows";
 
 export default function Table({
   tableData,
+  musics,
   onChangeMusic,
   onChangeFilter,
   onChangeOrder,
   onChangeRange,
 }) {
-  function handleFilterClick(filter) {
-    onChangeFilter(filter);
-  }
-
   const [loading, setLoading] = useState("is-loading");
   const activeFilterCSS = "button is-warning is-rounded";
   const filterCSS = "button is-ghost is-not-selected-button is-rounded";
@@ -55,7 +52,7 @@ export default function Table({
               className={
                 tableData.filter === "Popularity" ? activeFilterCSS : filterCSS
               }
-              onClick={() => handleFilterClick("Popularity")}
+              onClick={() => onChangeFilter("Popularity")}
             >
               Popularidade
             </button>
@@ -66,7 +63,7 @@ export default function Table({
                   ? activeFilterCSS
                   : filterCSS
               }
-              onClick={() => handleFilterClick("danceability")}
+              onClick={() => onChangeFilter("danceability")}
             >
               Dançabilidade
             </button>
@@ -75,7 +72,7 @@ export default function Table({
               className={
                 tableData.filter === "loudness" ? activeFilterCSS : filterCSS
               }
-              onClick={() => handleFilterClick("loudness")}
+              onClick={() => onChangeFilter("loudness")}
             >
               Intensidade
             </button>
@@ -84,7 +81,7 @@ export default function Table({
               className={
                 tableData.filter === "tempo" ? activeFilterCSS : filterCSS
               }
-              onClick={() => handleFilterClick("tempo")}
+              onClick={() => onChangeFilter("tempo")}
             >
               Duração
             </button>
@@ -139,7 +136,7 @@ export default function Table({
                     <th>Duração</th>
                   </tr>
                 </thead>
-                <Rows musics={tableData.musics} />
+                <Rows musics={musics} />
               </table>
             </div>
             <div className="notification">

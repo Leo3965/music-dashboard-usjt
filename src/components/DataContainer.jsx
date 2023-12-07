@@ -29,9 +29,13 @@ function resetPage() {
   return 1;
 }
 
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
 export default function DataContainer() {
+  const [musics, setMusics] = useState([]);
   const [dataObject, setDataObject] = useState({
-    musics: [],
     filter: "Popularity",
     order: false,
     page: 1,
@@ -41,13 +45,11 @@ export default function DataContainer() {
     },
   });
 
-  const onChangeMusic = (newList) => {
-    setDataObject((old) => {
-      return {
-        ...old,
-        ["musics"]: newList,
-      };
-    });
+  const onChangeMusic = async (newList) => {
+    console.log("sleeping");
+    await sleep(300);
+    console.log("awake");
+    setMusics(newList);
   };
 
   const onChangeFilter = (newFilter) => {
@@ -98,6 +100,7 @@ export default function DataContainer() {
     <>
       <Table
         tableData={dataObject}
+        musics={musics}
         onChangeMusic={onChangeMusic}
         onChangeFilter={onChangeFilter}
         onChangeOrder={onChangeOrder}
