@@ -4,42 +4,16 @@ import { useEffect, useState } from "react";
 import supabase from "../../config/supabaseClient";
 import Rows from "./Rows";
 
-export default function Table({ musics, onChangeMusic, filter, onChangeFilter }) {
-  const [order, setOrder] = useState(false);
-  const [range, setRange] = useState({
-    from: 0,
-    to: 9,
-  });
-  const [pageNumber, setPageNumber] = useState(1);
-
+export default function Table({
+  tableData,
+  onChangeMusic,
+  onChangeFilter,
+  onChangeOrder,
+  onChangeRange,
+}) {
   function handleFilterClick(filter) {
-    onChangeFilter((prev) => {
-      if (prev !== filter) {
-        onChangeFilter(filter);
-      }
-    });
+    onChangeFilter(filter);
   }
-
-  function handleOrderClick(bool) {
-    setOrder(bool);
-  }
-
-  const handleRangeClick = (isNext) => {
-    setRange((prev) => {
-      let from = prev.from;
-      let to = prev.to;
-      if (isNext && from < 1800) {
-        from = from + 10;
-        to = to + 10;
-        setPageNumber(pageNumber + 1);
-      } else if (from > 0) {
-        from = from - 10;
-        to = to - 10;
-        setPageNumber(pageNumber - 1);
-      }
-      setRange({ from, to });
-    });
-  };
 
   const [loading, setLoading] = useState("is-loading");
   const activeFilterCSS = "button is-warning is-rounded";
@@ -55,8 +29,8 @@ export default function Table({ musics, onChangeMusic, filter, onChangeFilter })
       const { data, error } = await supabase
         .from("music")
         .select("*")
-        .order(filter, { ascending: order })
-        .range(range.from, range.to);
+        .order(tableData.filter, { ascending: tableData.order })
+        .range(tableData.range.from, tableData.range.to);
 
       if (error) {
         console.log("Could not fetch the musics");
@@ -70,7 +44,7 @@ export default function Table({ musics, onChangeMusic, filter, onChangeFilter })
     };
 
     fetchMusics();
-  }, [range, order, filter]);
+  }, [tableData]);
 
   return (
     <div className="table-data-set">
@@ -78,7 +52,9 @@ export default function Table({ musics, onChangeMusic, filter, onChangeFilter })
         <div className="dataset-buttons">
           <div className="buttons">
             <button
-              className={filter === "Popularity" ? activeFilterCSS : filterCSS}
+              className={
+                tableData.filter === "Popularity" ? activeFilterCSS : filterCSS
+              }
               onClick={() => handleFilterClick("Popularity")}
             >
               Popularidade
@@ -86,7 +62,9 @@ export default function Table({ musics, onChangeMusic, filter, onChangeFilter })
 
             <button
               className={
-                filter === "danceability" ? activeFilterCSS : filterCSS
+                tableData.filter === "danceability"
+                  ? activeFilterCSS
+                  : filterCSS
               }
               onClick={() => handleFilterClick("danceability")}
             >
@@ -94,14 +72,18 @@ export default function Table({ musics, onChangeMusic, filter, onChangeFilter })
             </button>
 
             <button
-              className={filter === "loudness" ? activeFilterCSS : filterCSS}
+              className={
+                tableData.filter === "loudness" ? activeFilterCSS : filterCSS
+              }
               onClick={() => handleFilterClick("loudness")}
             >
               Intensidade
             </button>
 
             <button
-              className={filter === "tempo" ? activeFilterCSS : filterCSS}
+              className={
+                tableData.filter === "tempo" ? activeFilterCSS : filterCSS
+              }
               onClick={() => handleFilterClick("tempo")}
             >
               Duração
@@ -111,11 +93,13 @@ export default function Table({ musics, onChangeMusic, filter, onChangeFilter })
           <div className="field has-addons">
             <p className="control">
               <button
-                className={order === true ? activeOrderCSS : orderCSS}
-                onClick={() => handleOrderClick(true)}
+                className={tableData.order === true ? activeOrderCSS : orderCSS}
+                onClick={() => onChangeOrder(true)}
               >
                 <img
-                  className={order === true ? activeArrowCSS : arrowCSS}
+                  className={
+                    tableData.order === true ? activeArrowCSS : arrowCSS
+                  }
                   src={arrowUp}
                 />
                 <span>Ascending</span>
@@ -123,11 +107,15 @@ export default function Table({ musics, onChangeMusic, filter, onChangeFilter })
             </p>
             <p className="control">
               <button
-                className={order === false ? activeOrderCSS : orderCSS}
-                onClick={() => handleOrderClick(false)}
+                className={
+                  tableData.order === false ? activeOrderCSS : orderCSS
+                }
+                onClick={() => onChangeOrder(false)}
               >
                 <img
-                  className={order === false ? activeArrowCSS : arrowCSS}
+                  className={
+                    tableData.order === false ? activeArrowCSS : arrowCSS
+                  }
                   src={arrowDown}
                 />
                 <span>Descending</span>
@@ -151,7 +139,7 @@ export default function Table({ musics, onChangeMusic, filter, onChangeFilter })
                     <th>Duração</th>
                   </tr>
                 </thead>
-                <Rows musics={musics} />
+                <Rows musics={tableData.musics} />
               </table>
             </div>
             <div className="notification">
@@ -162,14 +150,14 @@ export default function Table({ musics, onChangeMusic, filter, onChangeFilter })
                       <button
                         type="button"
                         className="button"
-                        onClick={() => handleRangeClick(false)}
+                        onClick={() => onChangeRange(false)}
                       >
                         Anterior
                       </button>
                       <button
                         type="button"
                         className="button"
-                        onClick={() => handleRangeClick(true)}
+                        onClick={() => onChangeRange(true)}
                       >
                         Próxima
                       </button>
@@ -178,7 +166,7 @@ export default function Table({ musics, onChangeMusic, filter, onChangeFilter })
                 </div>
                 <div className="level-right">
                   <div className="level-item">
-                    <small>Página {pageNumber} de 1800</small>
+                    <small>Página {tableData.page} de 1800</small>
                   </div>
                 </div>
               </div>

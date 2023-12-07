@@ -1,35 +1,117 @@
 import { useState } from "react";
 import Table from "./table/Table";
 import MusicChart from "./tales/MusicChart";
-import Wiki from "./tales/Wiki";
-import Music from "./tales/Music";
+
+function getFilterName(filter) {
+  if (!filter) {
+    return "empty";
+  }
+  switch (filter) {
+    case "Popularity":
+      return "Popularidade";
+    case "danceability":
+      return "Dançabilidade";
+    case "tempo":
+      return "Duração";
+    case "loudness":
+      return "Intensidade";
+
+    default:
+      return "invalid";
+  }
+}
+
+function resetFilter() {
+  return { from: 0, to: 9 };
+}
+
+function resetPage() {
+  return 1;
+}
 
 export default function DataContainer() {
-  const [musics, setMusics] = useState(null);
-  const [filter, setFilter] = useState("Popularity");
+  const [dataObject, setDataObject] = useState({
+    musics: [],
+    filter: "Popularity",
+    order: false,
+    page: 1,
+    range: {
+      from: 0,
+      to: 9,
+    },
+  });
 
   const onChangeMusic = (newList) => {
-    setMusics(newList);
+    setDataObject((old) => {
+      return {
+        ...old,
+        ["musics"]: newList,
+      };
+    });
   };
 
   const onChangeFilter = (newFilter) => {
-    return setFilter(newFilter);
+    setDataObject((old) => {
+      return {
+        ...old,
+        ["range"]: resetFilter(),
+        ["page"]: resetPage(),
+        ["filter"]: newFilter,
+      };
+    });
+  };
+
+  const onChangeOrder = (boolean) => {
+    setDataObject((old) => {
+      return {
+        ...old,
+        ["order"]: boolean,
+      };
+    });
+  };
+
+  const onChangeRange = (isNextPage) => {
+    setDataObject((old) => {
+      if (isNextPage && old.range.from < 1800) {
+        return {
+          ...old,
+          ["range"]: {
+            from: old.range.from + 10,
+            to: old.range.to + 10,
+          },
+          ["page"]: old.page + 1,
+        };
+      } else if (from > 0) {
+        return {
+          ...old,
+          ["range"]: {
+            from: old.range.from - 10,
+            to: old.range.to - 10,
+          },
+          ["page"]: old.page - 1,
+        };
+      }
+    });
   };
 
   return (
     <>
       <Table
-        musics={musics}
+        tableData={dataObject}
         onChangeMusic={onChangeMusic}
-        filter={filter}
         onChangeFilter={onChangeFilter}
+        onChangeOrder={onChangeOrder}
+        onChangeRange={onChangeRange}
       />
 
-      <div className="tales">
+      {/* <div className="tales">
         <div className="tile is-parent">
-          {musics && <MusicChart musics={musics} filter={filter} />}
+          <MusicChart
+            musics={dataObject.musics}
+            columnName={getFilterName(data.filter)}
+          />
         </div>
-      </div>
+      </div> */}
     </>
   );
 }

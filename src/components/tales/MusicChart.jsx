@@ -1,35 +1,17 @@
 import { CategoryScale } from "chart.js";
 import Chart from "chart.js/auto";
-import { useState } from "react";
 import Tale from "./Tale";
 import LineChart from "./charts/LineChart.jsx";
 
 Chart.register(CategoryScale);
 
-export default function MusicChart({ musics, filter }) {
-  const getFilterName = (filter) => {
-    switch (filter) {
-      case "Popularity":
-        return "Popularidade";
-      case "danceability":
-        return "Dançabilidade";
-      case "tempo":
-        return "Duração";
-      case "loudness":
-        return "Intensidade";
-
-      default:
-        return "invalid";
-    }
-  };
-
-  const yFilter = getFilterName(filter);
-  const [chartData, setChartData] = useState({
-    labels: musics.map((data) => data.Popularity),
+export default function MusicChart({ musics, columnName }) {
+  const chartData = {
+    labels: ["a", "b"],
     datasets: [
       {
-        label: `${yFilter} :`,
-        data: musics.map((data) => data[filter]),
+        label: "loading..",
+        data: ["1", "2"],
         backgroundColor: [
           "rgba(75,192,192,1)",
           "#ecf0f1",
@@ -41,14 +23,11 @@ export default function MusicChart({ musics, filter }) {
         borderWidth: 2,
       },
     ],
-  });
+  };
 
   return (
     <Tale title="">
-      <LineChart
-        title={`Popularidade x ${yFilter}`}
-        chartData={chartData}
-      />
+      <LineChart title={`Popularidade x ${columnName}`} chartData={chartData} />
     </Tale>
   );
 }
