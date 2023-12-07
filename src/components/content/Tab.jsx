@@ -24,7 +24,7 @@ export default function Tab() {
           <li className={content !== 'video' ? 'is-active' : ''} onClick={() => handleContentClick("document")}>
             <a>
               <span className="icon is-small">
-                <i claclassNamess="far fa-file-alt" aria-hidden="true"></i>
+                <i className="far fa-file-alt" aria-hidden="true"></i>
               </span>
               <span>Documents</span>
             </a>

@@ -6,12 +6,12 @@ import Tales from "./components/tales/Tales";
 
 function App() {
   return (
-    <>
+    <section>
       <Hero />
       <Content />
       <Table />
       <Tales />
-    </>
+    </section>
   );
 }
 

@@ -1,8 +1,8 @@
 export default function Tale({ title, children,  className }) {
   return (
     <div className={"tile is-child box " + className}>
-      <p className="title">{title}</p>
-      <p>{children}</p>
+      <h2 className="title">{title}</h2>
+      <div>{children}</div>
     </div>
   );
 }

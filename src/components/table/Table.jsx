@@ -8,7 +8,6 @@ export default function Table() {
   const [filter, setFilter] = useState("Popularity");
   const [order, setOrder] = useState(false);
   const [musics, setMusics] = useState(null);
-  const [fetchError, setFetchError] = useState(null);
   const [range, setRange] = useState({
     from: 0,
     to: 9,
@@ -62,12 +61,11 @@ export default function Table() {
         .range(range.from, range.to);
 
       if (error) {
-        setFetchError("Could not fetch the musics");
+        console.log("Could not fetch the musics");
         setMusics(null);
       }
 
       if (data) {
-        setFetchError(null);
         setMusics(data);
       }
     };
@@ -143,7 +141,6 @@ export default function Table() {
         </div>
 
         <div className="container ">
-          {ErrorEvent && ErrorEvent}
           <div className={`b-table has-pagination ${loading}`}>
             <div className="table-wrapper has-mobile-cards ">
               <table className="table is-fullwidth is-striped is-hoverable is-fullwidth ">
