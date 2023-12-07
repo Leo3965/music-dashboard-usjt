@@ -31,6 +31,7 @@ body {
   border-bottom: 4px solid var(--dark-gray);
 }
 
+/* table */
 .dataset-buttons {
   display: flex;
   justify-content: space-between;
@@ -55,4 +56,21 @@ body {
 
 .is-not-selected-button:hover {
   color: var(--light) !important;
+}
+
+/* video */
+div.sticky {
+  display: flex;
+  justify-content: flex-end;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  padding: 40px;
+}
+
+.sticky > iframe {
+  height: 180px;
+  width: auto;
+  border: 3px solid var(--dark-gray);
+  box-shadow:27px 19px 45px rgba(0, 0, 0, 0.678);
 }
