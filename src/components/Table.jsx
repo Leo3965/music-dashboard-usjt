@@ -1,35 +1,92 @@
 import arrowUp from "../assets/svg/arrow-up-outline.svg";
 import arrowDown from "../assets/svg/arrow-down-outline.svg";
+import { useState } from "react";
 
 export default function Table() {
+  const [filter, setFilter] = useState("popularidade");
+  const [order, setOrder] = useState(true);
+
+  function handleFilterClick(filter) {
+    setFilter((prev) => {
+      if (prev !== filter) {
+        setFilter(filter);
+      }
+    });
+  }
+
+  function handleOrderClick(bool) {
+    setOrder(bool);
+  }
+
   let loading = "is-loading";
+  const activeFilterCSS = "button is-warning is-rounded";
+  const filterCSS = "button is-ghost is-not-selected-button is-rounded";
+  const orderCSS =
+    "button is-warning is-light is-not-selected-button is-rounded";
+  const activeOrderCSS = "button is-info is-rounded";
+  const arrowCSS = "icon-filter";
+  const activeArrowCSS = "icon-filter selected";
+
   return (
     <div className="table-data-set">
       <section className="section">
         <div className="dataset-buttons">
           <div className="buttons">
-            <button className="button is-ghost is-not-selected-button is-rounded">
-              Ghost
+            <button
+              className={
+                filter === "popularidade" ? activeFilterCSS : filterCSS
+              }
+              onClick={() => handleFilterClick("popularidade")}
+            >
+              Popularidade
             </button>
-            <button className="button is-warning is-rounded">Warning</button>
-            <button className="button is-ghost is-not-selected-button is-rounded">
-              Ghost
+
+            <button
+              className={
+                filter === "dançabilidade" ? activeFilterCSS : filterCSS
+              }
+              onClick={() => handleFilterClick("dançabilidade")}
+            >
+              Dançabilidade
             </button>
-            <button className="button is-ghost is-not-selected-button is-rounded">
-              Ghost
+
+            <button
+              className={filter === "intensidade" ? activeFilterCSS : filterCSS}
+              onClick={() => handleFilterClick("intensidade")}
+            >
+              Intensidade
+            </button>
+
+            <button
+              className={filter === "duração" ? activeFilterCSS : filterCSS}
+              onClick={() => handleFilterClick("duração")}
+            >
+              Duração
             </button>
           </div>
 
           <div className="field has-addons">
             <p className="control">
-              <button className="button is-info is-rounded">
-                <img className="icon-filter selected" src={arrowUp} />
+              <button
+                className={order === true ? activeOrderCSS : orderCSS}
+                onClick={() => handleOrderClick(true)}
+              >
+                <img
+                  className={order === true ? activeArrowCSS : arrowCSS}
+                  src={arrowUp}
+                />
                 <span>Ascending</span>
               </button>
             </p>
             <p className="control">
-              <button className="button is-warning is-light is-not-selected-button is-rounded">
-                <img className="icon-filter" src={arrowDown} />
+              <button
+                className={order === false ? activeOrderCSS : orderCSS}
+                onClick={() => handleOrderClick(false)}
+              >
+                <img
+                  className={order === false ? activeArrowCSS : arrowCSS}
+                  src={arrowDown}
+                />
                 <span>Descending</span>
               </button>
             </p>
