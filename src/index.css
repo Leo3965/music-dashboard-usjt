@@ -48,7 +48,8 @@ body {
 }
 
 .selected {
-  filter: invert(100%) sepia(0%) saturate(3676%) hue-rotate(274deg) brightness(125%) contrast(112%);
+  filter: invert(100%) sepia(0%) saturate(3676%) hue-rotate(274deg)
+    brightness(125%) contrast(112%);
   /* filter: invert(100%) sepia(15%) saturate(2%) hue-rotate(139deg) brightness(111%) contrast(100%); */
 }
 
@@ -70,12 +71,19 @@ div.sticky {
   min-height: 400px;
   min-width: 80%;
   border: 3px solid var(--dark-gray);
-  box-shadow:27px 19px 45px rgba(0, 0, 0, 0.678);
+  box-shadow: 27px 19px 45px rgba(0, 0, 0, 0.678);
 }
 
 /* content */
 .content-section {
   padding: 3rem 4rem;
+}
+
+.content-images {
+  height: 256px;
+  width: 256px;
+  border: 1px solid var(--dark-gray);
+  box-shadow: 5px 3px 10px rgba(0, 0, 0, 0.278);
 }
 
 /* tales */

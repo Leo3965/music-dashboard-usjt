@@ -4,7 +4,7 @@ export default function Hero() {
       <div className="hero-body">
         <div className="container has-text-right">
           <p className="title">A3 - Big Data</p>
-          <p className="subtitle">Music Genre Classification</p>
+          <p className="subtitle">Music Classification</p>
         </div>
       </div>
 

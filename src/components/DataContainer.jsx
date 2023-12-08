@@ -105,11 +105,11 @@ export default function DataContainer() {
     console.table(music);
     if (music) {
       return {
-        labels: music.map((data) => data.Popularity),
+        labels: music.map((data) => data[dataObject.filter]),
         datasets: [
           {
-            label: `${columnName}`,
-            data: music.map((data) => data[dataObject.filter]),
+            label: `Popularidade`,
+            data: music.map((data) => data.Popularity),
             backgroundColor: [
               "rgba(75,192,192,1)",
               "#ecf0f1",
@@ -127,8 +127,8 @@ export default function DataContainer() {
         labels: ["a"],
         datasets: [
           {
-            label: `${columnName}`,
-            data: "1",
+            label: `Popularidade`,
+            data: ["1"],
             backgroundColor: [
               "rgba(75,192,192,1)",
               "#ecf0f1",
@@ -160,7 +160,7 @@ export default function DataContainer() {
       <div className="tales">
         <Tale title="">
           <LineChart
-            title={`Popularidade x ${columnName}`}
+            title={`${columnName} x Popularidade`}
             musics={musics}
             chartData={chartData}
           />

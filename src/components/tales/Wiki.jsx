@@ -11,17 +11,17 @@ export default function Wiki() {
   useEffect(() => {
     const fetchWiki = async () => {
       await fetch(
-        "https://en.wikipedia.org/w/rest.php/v1/search/page?q=earth&limit=1"
+        "https://en.wikipedia.org/w/rest.php/v1/search/page?q=Music&limit=1"
       )
         .then((res) => {
           return res.json();
         })
         .then((json) => {
           const wikiResult = json.pages[0].excerpt;
-          const find = `<span class="searchmatch">Earth</span>`;
+          const find = `<span class="searchmatch">Music</span>`;
           const regex = new RegExp(find, "g");
           const wikiResultFormated = wikiResult.replace(regex, "");
-          setWiki(capitalizeFirstLetter(wikiResultFormated));
+          setWiki("Music " + capitalizeFirstLetter(wikiResultFormated) + ".");
         })
         .catch((err) => {
           console.log(err.message);

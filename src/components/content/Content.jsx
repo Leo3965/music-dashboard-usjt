@@ -1,4 +1,7 @@
 import Tab from "./Tab";
+import MyPhoto from "../../assets/images/me.jpg";
+import supabase from "../../assets/images/supabase.png";
+import cat from "../../assets/images/giphy.gif";
 
 export default function Content() {
   return (
@@ -8,58 +11,70 @@ export default function Content() {
           <div className="media">
             <div className="media-left">
               <figure className="image is-48x48">
-                <img
-                  src="https://bulma.io/images/placeholders/96x96.png"
-                  alt="Placeholder image"
-                />
+                <img src={MyPhoto} alt="minha foto" />
               </figure>
             </div>
             <div className="media-content">
-              <p className="title is-4">John Smith</p>
-              <p className="subtitle is-6">@johnsmith</p>
+              <p className="title is-4">Léo Freitas</p>
+              <p className="subtitle is-6">
+                <a>@leonardo.freiitas</a>
+              </p>
             </div>
           </div>
 
           <div className="content">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus
-            nec iaculis mauris. <a>@bulmaio</a>.<a href="#">#css</a>{" "}
-            <a href="#">#responsive</a>
+            <h2>Music Classification</h2>
+            Esta página web foi criada com o propósito de apresentar as
+            compotências desenvolvidas na máteria de{" "}
+            <strong>Análise de Dados e Big Data</strong>, em conjunto com o
+            conhecimento do curso de Engenharia da Computação. Este é o trabalho
+            para a avaliação <i>"A3"</i>, que tem como requisitos, aplicar
+            técnicas de estatística e lógica para analisar dados, criar um
+            dashboard dinâmico e extrair informações relevantes de um dataset.
             <br />
-            <time dateTime="2016-1-1">11:09 PM - 1 Jan 2016</time>
-            <h1>Hello World</h1>
+            <br />
             <p>
-              Lorem ipsum
               <sup>
                 <a>[1]</a>
               </sup>{" "}
-              dolor sit amet, consectetur adipiscing elit. Nulla accumsan, metus
-              ultrices eleifend gravida, nulla nunc varius lectus, nec rutrum
-              justo nibh eu lectus. Ut vulputate semper dui. Fusce erat odio,
-              sollicitudin vel erat vel, interdum mattis neque. Sub
-              <sub>script</sub> works as well!
-            </p>
-            <h2>Second level</h2>
-            <p>
-              Curabitur accumsan turpis pharetra{" "}
-              <strong>augue tincidunt</strong> blandit. Quisque condimentum
-              maximus mi, sit amet commodo arcu rutrum id. Proin pretium urna
-              vel cursus venenatis. Suspendisse potenti. Etiam mattis sem
-              rhoncus lacus dapibus facilisis. Donec at dignissim dui. Ut et
-              neque nisl.
+              Este trabalho realiza uma análise em um dataset de músicas e as
+              classifíca de acordo com sua popularidade. contendo as seguintes
+              colunas:
             </p>
             <ul>
-              <li>
-                In fermentum leo eu lectus mollis, quis dictum mi aliquet.
-              </li>
-              <li>
-                Morbi eu nulla lobortis, lobortis est in, fringilla felis.
-              </li>
-              <li>
-                Aliquam nec felis in sapien venenatis viverra fermentum nec
-                lectus.
-              </li>
-              <li>Ut non enim metus.</li>
+              <li> artist name</li>
+              <li>track name</li>
+              <li>popularidade</li>
+              <li>danceability</li>
+              <li>loudness</li>
+              <li>tempo</li>
             </ul>
+            <p>
+              As músicas possuem diversos gêneros como:{" "}
+              <i>
+                Rock, Indie, Alt, Pop, Metal, HipHop, Alt_Music, Blues,
+                Acoustic/Folk, Instrumental, Country, Bollywood
+              </i>
+              . E ao total são 7,713 registros.
+            </p>
+            <p>
+              <sup>
+                <a>[2]</a>
+              </sup>{" "}
+              O dataset foi extraído através da base de dados da <a>Kaggle</a>,
+              e os dados foram armazenados no Postgres, banco de dados
+              relacional, através do <a>Supabase</a>, e dessa forma foi possível
+              apresentar a base em tempo real na seção abaixo. Este website foi
+              desenvolvimento com o Framework <a>React</a>.
+            </p>
+
+            <figure>
+              <img className="content-images" src={supabase} />
+              <img className="content-images" src={cat} />
+              <figcaption>Banco de dados x 😹</figcaption>
+            </figure>
+
+            <time dateTime="2023-12-12">12:24 PM - 12 Dez 2023</time>
           </div>
 
           <Tab />
