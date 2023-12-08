@@ -17,7 +17,12 @@ export default function Content() {
             <div className="media-content">
               <p className="title is-4">Léo Freitas</p>
               <p className="subtitle is-6">
-                <a>@leonardo.freiitas</a>
+                <a
+                  target="_blank"
+                  href="https://www.instagram.com/leonardo.freiitas/"
+                >
+                  @leonardo.freiitas
+                </a>
               </p>
             </div>
           </div>
@@ -61,19 +66,30 @@ export default function Content() {
               <sup>
                 <a>[2]</a>
               </sup>{" "}
-              O dataset foi extraído através da base de dados da <a>Kaggle</a>,
-              e os dados foram armazenados no Postgres, banco de dados
-              relacional, através do <a>Supabase</a>, e dessa forma foi possível
-              apresentar a base em tempo real na seção abaixo. Este website foi
-              desenvolvimento com o Framework <a>React</a>.
+              O dataset foi extraído através da base de dados da{" "}
+              <a
+                href="https://www.kaggle.com/datasets/purumalgi/music-genre-classification"
+                target="_blank"
+              >
+                Kaggle
+              </a>
+              , e os dados foram armazenados no Postgres, banco de dados
+              relacional, através do{" "}
+              <a href="https://supabase.com/" target="_blank">
+                Supabase
+              </a>
+              , e dessa forma foi possível apresentar a base em tempo real na
+              seção abaixo. Este website foi desenvolvimento com o Framework{" "}
+              <a target="_blank" href="https://reactjs.org/">
+                React
+              </a>
+              .
             </p>
-
             <figure>
               <img className="content-images" src={supabase} />
               <img className="content-images" src={cat} />
               <figcaption>Banco de dados x 😹</figcaption>
             </figure>
-
             <time dateTime="2023-12-12">12:24 PM - 12 Dez 2023</time>
           </div>
 
