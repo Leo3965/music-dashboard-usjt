@@ -32,7 +32,7 @@ export default function Tab() {
         </ul>
       </div>
 
-      {content === "video" ? <Video embedId="rokGy0huYEA" /> : <Document />}
+      {content === "video" ? <Video embedId="FXh6ZRZI9Wo" /> : <Document />}
     </>
   );
 }
